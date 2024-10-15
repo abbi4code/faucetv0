@@ -5,12 +5,19 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
-
+@font-face {
+  font-family: 'Manga';
+  src: url('/fonts/Manga.otf') format('opentype'),
+       url('/fonts/Manga-Bold.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
 /* @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
+  
 
 @layer base {
   :root {
