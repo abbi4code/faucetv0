@@ -20,13 +20,12 @@ import Airdrop from "./Airdrop";
 
 export default function Connection() {
   // const network =WalletAdapterNetwork.Devnet
-
+  const rpcUrl = process.env.NEXT_PUBLIC_RPC_URL || ""
+  console.log("rpcUrl",rpcUrl)
   // const endpoint = useMemo(()=>clusterApiUrl(network) ,[network])
   return (
     <ConnectionProvider
-      endpoint={
-        "https://solana-devnet.g.alchemy.com/v2/ThulD-kwRxO3R7wbCbk5JmL6Rixm803N"
-      }
+      endpoint={rpcUrl}
       
     >
       <WalletProvider wallets={[]} autoConnect>
