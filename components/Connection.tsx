@@ -73,52 +73,52 @@ export default function Connection() {
   );
 }
 
-function ButtonModel(){
-  const wallet = useWallet()
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+function ButtonModel() {
+  const wallet = useWallet();
+  const [windowWidth, setWindowWidth] = useState<number | null>(null);
 
   useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    
-    window.addEventListener("resize", handleResize);
-    
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    // Ensure window is defined before accessing it
+    if (typeof window !== "undefined") {
+      setWindowWidth(window.innerWidth);
+
+      const handleResize = () => setWindowWidth(window.innerWidth);
+      window.addEventListener("resize", handleResize);
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
   }, []);
 
-  console.log("wallet", wallet.publicKey?.toString())
+  console.log("wallet", wallet.publicKey?.toString());
 
-  return(
+  return (
     <div className="flex justify-around items-center w-full">
-                
-                  <WalletMultiButton
-                    style={{
-                      fontSize: windowWidth < 640 ?  ".7rem" : "1rem",
-                      width: "100%",
-                      maxWidth: windowWidth < 640 ? "8rem" : "10rem",
-                      textAlign: "center",
-                      padding: "0.75rem 1rem",
-                      backgroundColor: "black"
-                    }}
-                  className=""
-                    
-
-                  />
-                  {wallet.publicKey && <WalletDisconnectButton
-                    style={{
-                      fontSize: windowWidth < 640 ?  ".7rem" : "1rem",
-                      width: "100%",
-                      maxWidth: windowWidth < 640 ? "8rem" : "10rem",
-                      textAlign: "center",
-                      padding: "0.75rem 1rem",
-                      backgroundColor: "black"
-                      
-                    }}
-                  />}
-                </div>
-
-  )
+      <WalletMultiButton
+        style={{
+          fontSize: windowWidth && windowWidth < 640 ? ".7rem" : "1rem",
+          width: "100%",
+          maxWidth: windowWidth && windowWidth < 640 ? "8rem" : "10rem",
+          textAlign: "center",
+          padding: "0.75rem 1rem",
+          backgroundColor: "black",
+        }}
+      />
+      {wallet.publicKey && (
+        <WalletDisconnectButton
+          style={{
+            fontSize: windowWidth && windowWidth < 640 ? ".7rem" : "1rem",
+            width: "100%",
+            maxWidth: windowWidth && windowWidth < 640 ? "8rem" : "10rem",
+            textAlign: "center",
+            padding: "0.75rem 1rem",
+            backgroundColor: "black",
+          }}
+        />
+      )}
+    </div>
+  );
 }
 
 
