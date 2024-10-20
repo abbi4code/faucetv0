@@ -26,10 +26,13 @@ export default function Airdrop() {
             }
 
             console.log("Requesting airdrop...");
-            const signature = await connection.connection.requestAirdrop(wallet.publicKey, amount);
-            await connection.connection.confirmTransaction(signature);
+            if(wallet.publicKey){
+                const signature = await connection.connection.requestAirdrop(wallet.publicKey, amount);
+                await connection.connection.confirmTransaction(signature);
+                toast.success(`${amount} SOL successfully transferred`);
+            }
+           
 
-            toast.success(`${amount} SOL successfully transferred`);
         } catch (error) {
             console.error("Error during airdrop: ", error);
             toast.error("Airdrop failed! Please try again.");
