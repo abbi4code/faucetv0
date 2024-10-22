@@ -21,6 +21,8 @@ import Airdrop from "./Airdrop";
 import { Label } from "./ui/label";
 import Image from "next/image";
 import Loading from "./Loading";
+import Balance from "./Balance";
+import SignMsg from "./signMsg";
 // import Airdrop from './Airdrop';
 
 export default function Connection() {
@@ -57,6 +59,8 @@ export default function Connection() {
             <div className="h-screen w-full flex flex-col justify-center items-center gap-8 z-10 md:col-span-1">
               <Header/>
               <Airdrop />
+              <Balance/>
+              <SignMsg/>
               <div className="border border-black flex flex-col w-[20rem] sm:min-w-[35rem] px-5 py-2 rounded  items-center  z-10">
                 <Label className="font-bold selection:bg-yellow-700 tracking-wider font-custom text-4xl mt-3 mb-5">
                   Connect Your Wallet
