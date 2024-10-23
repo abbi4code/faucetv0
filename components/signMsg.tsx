@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from 'react'
 import { ed25519 } from '@noble/curves/ed25519'
 import { useWallet } from '@solana/wallet-adapter-react'
