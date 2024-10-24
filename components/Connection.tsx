@@ -95,7 +95,7 @@ function ButtonModel() {
     }
   }, []);
 
-  console.log("wallet", wallet.publicKey?.toString());
+  // console.log("wallet", wallet.publicKey?.toString());
 
   return (
     <div className="flex justify-around items-center w-full">
